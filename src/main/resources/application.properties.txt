@@ -14,3 +14,4 @@ spring.datasource.ur1=jdbc:postgresql://ec2-52-200-68-5.compute-1.amazonaws.com:
 spring.datasource.username = zhjeyemazqbgxl
 spring.datasource.password = daf3806aeb60b2b20cdbd038416846d8c03a007887d2992483d64ffe09b3fc87
 spring.datasource.driverClassName= org.postgresql.Driver
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
