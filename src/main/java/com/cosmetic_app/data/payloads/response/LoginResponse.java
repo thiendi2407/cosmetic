@@ -1,18 +1,17 @@
 package com.cosmetic_app.data.payloads.response;
 
-public class MessageResponse {
+public class LoginResponse {
 
-    private String message;
+    private String token;
 
-    public MessageResponse(String message){
-        this.message = message;
+    public LoginResponse() {
     }
 
-    public void setMessage(String message){
-        this.message = message;
+    public String getToken() {
+        return token;
     }
 
-    public String getMessage(){
-        return message;
+    public void setToken(String token) {
+        this.token = token;
     }
 }

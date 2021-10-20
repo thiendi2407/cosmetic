@@ -1,17 +1,15 @@
-package com.lekwacious.employee_app.web;
+package com.cosmetic_app.web;
 
-import com.lekwacious.employee_app.data.models.Ingredient;
-import com.lekwacious.employee_app.data.models.Manufacture;
-import com.lekwacious.employee_app.service.IngredientService;
-import com.lekwacious.employee_app.service.ManufactureService;
+import com.cosmetic_app.data.models.IngredientInfo;
+import com.cosmetic_app.data.payloads.request.IngredientRequest;
+import com.cosmetic_app.data.payloads.response.MessageResponse;
+import com.cosmetic_app.service.IngredientService;
+import com.cosmetic_app.data.models.Ingredient;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,19 +34,27 @@ public class IngredientController {
     }
 
     @GetMapping("/find/{name}")
-    public ResponseEntity<Ingredient> getIngredientById (@PathVariable("name") String name) {
+    public ResponseEntity<Ingredient> getIngredientByName (@PathVariable("name") String name) {
         Ingredient ingredient = ingredientService.findByName(name);
         return new ResponseEntity<>(ingredient, HttpStatus.OK);
     }
+
+    @GetMapping("/find-availability/{name}")
+    public ResponseEntity<List<IngredientInfo>> getAvailabilityByName (@PathVariable("name") String name) {
+        List<IngredientInfo> ingredients = ingredientService.findAvailability(name);
+        return new ResponseEntity<>(ingredients, HttpStatus.OK);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<MessageResponse> addIngredient(@RequestBody IngredientRequest ingredient) {
+        MessageResponse newIngredient = ingredientService.createIngredient(ingredient);
+        return new ResponseEntity<>(newIngredient, HttpStatus.CREATED);
+    }
+
 //    @GetMapping("/find/{id}")
 //    public ResponseEntity<Employee> getEmployeeById (@PathVariable("id") Integer id) {
 //        Employee employee = employeeService.getASingleEmployee(id);
 //        return new ResponseEntity<>(employee, HttpStatus.OK);
-//    }
-//    @PostMapping("/add")
-//    public ResponseEntity<MessageResponse> addEmployee( @RequestBody EmployeeRequest employee) {
-//        MessageResponse newEmployee = employeeService.createEmployee(employee);
-//        return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
 //    }
 //
 //    @PutMapping("/update/{id}")

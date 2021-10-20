@@ -1,14 +1,8 @@
 package com.cosmetic_app.data.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Objects;
 
-public class IngredientInfo {
-
-    private String ingredient_name;
+public class ManufactureInfo {
 
     private String manufacture_name;
 
@@ -16,11 +10,13 @@ public class IngredientInfo {
 
     private String manufacture_phoneNumber;
 
+    private String ingredient_name;
+
     private String quantity;
 
     private String metric_type;
 
-    public IngredientInfo(String ingredient_name, String manufacture_name, String manufacture_address, String manufacture_phoneNumber, String quantity, String metric_type) {
+    public ManufactureInfo(String ingredient_name, String manufacture_name, String manufacture_address, String manufacture_phoneNumber, String quantity, String metric_type) {
         this.ingredient_name = ingredient_name;
         this.manufacture_name = manufacture_name;
         this.manufacture_address = manufacture_address;
@@ -81,7 +77,7 @@ public class IngredientInfo {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        IngredientInfo that = (IngredientInfo) o;
+        ManufactureInfo that = (ManufactureInfo) o;
         return Objects.equals(ingredient_name, that.ingredient_name) &&
                 Objects.equals(manufacture_name, that.manufacture_name) &&
                 Objects.equals(manufacture_address, that.manufacture_address) &&

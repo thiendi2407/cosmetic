@@ -1,9 +1,10 @@
-package com.lekwacious.employee_app.service;
+package com.cosmetic_app.service;
 
-import com.lekwacious.employee_app.data.models.Ingredient;
-import com.lekwacious.employee_app.data.models.Manufacture;
-import com.lekwacious.employee_app.data.payloads.request.ManufactureRequest;
-import com.lekwacious.employee_app.data.payloads.response.MessageResponse;
+import com.cosmetic_app.data.models.IngredientInfo;
+import com.cosmetic_app.data.models.Manufacture;
+import com.cosmetic_app.data.models.ManufactureInfo;
+import com.cosmetic_app.data.payloads.request.ManufactureRequest;
+import com.cosmetic_app.data.payloads.response.MessageResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface ManufactureService {
     List<Manufacture> getAllManufacture();
 
     Manufacture findByName(String name);
+
+    List<ManufactureInfo> findAvailability(String name);
 }

@@ -1,4 +1,4 @@
-package com.lekwacious.employee_app.data.payloads.request;
+package com.cosmetic_app.data.payloads.request;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

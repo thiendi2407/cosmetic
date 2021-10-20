@@ -1,90 +1,97 @@
 package com.cosmetic_app.data.models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
 
-@Entity
-public class Manufacture {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+public class IngredientInfo {
 
-    private String name;
+    private String ingredient_name;
 
-    private String address;
+    private String manufacture_name;
 
-    private String phoneNumber;
+    private String manufacture_address;
 
-    private String email;
+    private String manufacture_phoneNumber;
 
-    private String country;
+    private String quantity;
 
-    public Manufacture() {
+    private String metric_type;
+
+    public IngredientInfo(String ingredient_name, String manufacture_name, String manufacture_address, String manufacture_phoneNumber, String quantity, String metric_type) {
+        this.ingredient_name = ingredient_name;
+        this.manufacture_name = manufacture_name;
+        this.manufacture_address = manufacture_address;
+        this.manufacture_phoneNumber = manufacture_phoneNumber;
+        this.quantity = quantity;
+        this.metric_type = metric_type;
     }
 
-    public Integer getId() {
-        return id;
+    public String getIngredient_name() {
+        return ingredient_name;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIngredient_name(String ingredient_name) {
+        this.ingredient_name = ingredient_name;
     }
 
-    public String getName() {
-        return name;
+    public String getManufacture_name() {
+        return manufacture_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setManufacture_name(String manufacture_name) {
+        this.manufacture_name = manufacture_name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getManufacture_address() {
+        return manufacture_address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setManufacture_address(String manufacture_address) {
+        this.manufacture_address = manufacture_address;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getManufacture_phoneNumber() {
+        return manufacture_phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setManufacture_phoneNumber(String manufacture_phoneNumber) {
+        this.manufacture_phoneNumber = manufacture_phoneNumber;
     }
 
-    public String getEmail() {
-        return email;
+    public String getQuantity() {
+        return quantity;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 
-    public String getCountry() {
-        return country;
+    public String getMetric_type() {
+        return metric_type;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setMetric_type(String metric_type) {
+        this.metric_type = metric_type;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Manufacture that = (Manufacture) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(address, that.address) &&
-                Objects.equals(phoneNumber, that.phoneNumber) &&
-                Objects.equals(email, that.email) &&
-                Objects.equals(country, that.country);
+        IngredientInfo that = (IngredientInfo) o;
+        return Objects.equals(ingredient_name, that.ingredient_name) &&
+                Objects.equals(manufacture_name, that.manufacture_name) &&
+                Objects.equals(manufacture_address, that.manufacture_address) &&
+                Objects.equals(manufacture_phoneNumber, that.manufacture_phoneNumber) &&
+                Objects.equals(quantity, that.quantity) &&
+                Objects.equals(metric_type, that.metric_type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, address, phoneNumber, email, country);
+        return Objects.hash(ingredient_name, manufacture_name, manufacture_address, manufacture_phoneNumber, quantity, metric_type);
     }
 }

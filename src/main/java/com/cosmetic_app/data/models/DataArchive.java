@@ -1,4 +1,4 @@
-package com.lekwacious.employee_app.data.models;
+package com.cosmetic_app.data.models;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -11,15 +11,11 @@ public class DataArchive {
 
     private String quantity;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="manufacture_id", insertable = false, updatable = false)
-    private Manufacture manufacture;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="ingredient_id", insertable = false, updatable = false)
-    private Ingredient ingredient;
-
     private String metricType;
+
+    private Integer manufactureId;
+
+    private Integer ingredientId;
 
     public DataArchive() {
     }
@@ -30,22 +26,6 @@ public class DataArchive {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Manufacture getManufacture() {
-        return manufacture;
-    }
-
-    public void setManufacture(Manufacture manufacture) {
-        this.manufacture = manufacture;
-    }
-
-    public Ingredient getIngredient() {
-        return ingredient;
-    }
-
-    public void setIngredient(Ingredient ingredient) {
-        this.ingredient = ingredient;
     }
 
     public String getQuantity() {
@@ -64,6 +44,22 @@ public class DataArchive {
         this.metricType = metricType;
     }
 
+    public Integer getManufactureId() {
+        return manufactureId;
+    }
+
+    public void setManufactureId(Integer manufactureId) {
+        this.manufactureId = manufactureId;
+    }
+
+    public Integer getIngredientId() {
+        return ingredientId;
+    }
+
+    public void setIngredientId(Integer ingredientId) {
+        this.ingredientId = ingredientId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,13 +67,13 @@ public class DataArchive {
         DataArchive that = (DataArchive) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(quantity, that.quantity) &&
-                Objects.equals(manufacture, that.manufacture) &&
-                Objects.equals(ingredient, that.ingredient) &&
-                Objects.equals(metricType, that.metricType);
+                Objects.equals(metricType, that.metricType) &&
+                Objects.equals(manufactureId, that.manufactureId) &&
+                Objects.equals(ingredientId, that.ingredientId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, quantity, manufacture, ingredient, metricType);
+        return Objects.hash(id, quantity, metricType, manufactureId, ingredientId);
     }
 }

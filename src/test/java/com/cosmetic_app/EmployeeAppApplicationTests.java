@@ -1,4 +1,4 @@
-package com.lekwacious.employee_app;
+package com.cosmetic_app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

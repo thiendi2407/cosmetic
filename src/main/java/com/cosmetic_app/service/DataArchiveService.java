@@ -1,10 +1,8 @@
-package com.lekwacious.employee_app.service;
+package com.cosmetic_app.service;
 
-import com.lekwacious.employee_app.data.models.DataArchive;
-import com.lekwacious.employee_app.data.models.Ingredient;
-import com.lekwacious.employee_app.data.payloads.request.DataArchiveRequest;
-import com.lekwacious.employee_app.data.payloads.request.IngredientRequest;
-import com.lekwacious.employee_app.data.payloads.response.MessageResponse;
+import com.cosmetic_app.data.models.DataArchive;
+import com.cosmetic_app.data.payloads.request.DataArchiveRequest;
+import com.cosmetic_app.data.payloads.response.MessageResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

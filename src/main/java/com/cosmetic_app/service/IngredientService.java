@@ -1,8 +1,9 @@
-package com.lekwacious.employee_app.service;
+package com.cosmetic_app.service;
 
-import com.lekwacious.employee_app.data.models.Ingredient;
-import com.lekwacious.employee_app.data.payloads.request.IngredientRequest;
-import com.lekwacious.employee_app.data.payloads.response.MessageResponse;
+import com.cosmetic_app.data.models.Ingredient;
+import com.cosmetic_app.data.models.IngredientInfo;
+import com.cosmetic_app.data.payloads.request.IngredientRequest;
+import com.cosmetic_app.data.payloads.response.MessageResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface IngredientService {
     List<Ingredient> getAllIngredient();
 
     Ingredient findByName(String name);
+
+    List<IngredientInfo> findAvailability(String name);
 }

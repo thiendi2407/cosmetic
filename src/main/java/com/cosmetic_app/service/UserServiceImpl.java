@@ -1,29 +1,33 @@
 package com.cosmetic_app.service;
 
-import com.cosmetic_app.data.models.IngredientInfo;
-import com.cosmetic_app.data.repository.IngredientRepository;
 import com.cosmetic_app.data.models.Ingredient;
+import com.cosmetic_app.data.models.IngredientInfo;
+import com.cosmetic_app.data.models.User;
 import com.cosmetic_app.data.payloads.request.IngredientRequest;
+import com.cosmetic_app.data.payloads.request.UserLoginRequest;
 import com.cosmetic_app.data.payloads.response.MessageResponse;
+import com.cosmetic_app.data.repository.IngredientRepository;
+import com.cosmetic_app.data.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class IngredientServiceImpl implements IngredientService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
-    IngredientRepository ingredientRepository;
+    UserRepository userRepository;
 
     @Override
-    public MessageResponse createIngredient(IngredientRequest employeeRequest) {
-        Ingredient newEmployee = new Ingredient();
-        newEmployee.setName(employeeRequest.getName());
-        ingredientRepository.save(newEmployee);
-        return new MessageResponse("New Ingredient created successfully");
+    public MessageResponse createUser(UserLoginRequest request) {
+        User user = new User();
+        user.setUserName(request.getUserName());
+        user.setPassword(request.getPassword());
+        userRepository.save(user);
+        return new MessageResponse("New User created successfully");
     }
-//
+        //
 //    @Override
 //    public Optional<Employee> updateEmployee(Integer employeeId, EmployeeRequest employeeRequest)  throws ResourceNotFoundException{
 //        Optional<Employee> employee = employeeRepository.findById(employeeId);
@@ -48,19 +52,19 @@ public class IngredientServiceImpl implements IngredientService {
 //    }
 
     @Override
-    public List<Ingredient> getAllIngredient() {
-        return ingredientRepository.findAll();
+    public List<User> getAllUser() {
+        return userRepository.findAll();
     }
 
     @Override
-    public Ingredient findByName(String name) {
-        return ingredientRepository.findByName(name);
+    public User findUser(String name, String password) {
+        return userRepository.findUser(name, password);
     }
 
-    @Override
-    public List<IngredientInfo> findAvailability(String name) {
-        return ingredientRepository.findAvailability(name);
-    }
+//    @Override
+//    public List<IngredientInfo> findAvailability(String name) {
+//        return ingredientRepository.findAvailability(name);
+//    }
 
 //    @Override
 //    public void deleteEmployee(Integer employeeId) throws ResourceNotFoundException {

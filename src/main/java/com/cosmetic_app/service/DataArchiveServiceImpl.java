@@ -1,11 +1,9 @@
-package com.lekwacious.employee_app.service;
+package com.cosmetic_app.service;
 
-import com.lekwacious.employee_app.data.models.DataArchive;
-import com.lekwacious.employee_app.data.models.Ingredient;
-import com.lekwacious.employee_app.data.models.Manufacture;
-import com.lekwacious.employee_app.data.payloads.request.DataArchiveRequest;
-import com.lekwacious.employee_app.data.payloads.response.MessageResponse;
-import com.lekwacious.employee_app.data.repository.DataArchiveRepository;
+import com.cosmetic_app.data.models.DataArchive;
+import com.cosmetic_app.data.payloads.request.DataArchiveRequest;
+import com.cosmetic_app.data.payloads.response.MessageResponse;
+import com.cosmetic_app.data.repository.DataArchiveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,10 +26,10 @@ public class DataArchiveServiceImpl implements DataArchiveService {
         DataArchive newDataRecord = new DataArchive();
         newDataRecord.setQuantity(dataArchiveRequest.getQuantity());
         newDataRecord.setMetricType(dataArchiveRequest.getMetricType());
-        newDataRecord.setManufacture(manufactureService.findByName(dataArchiveRequest.getManufactureName()));
-        newDataRecord.setIngredient(ingredientService.findByName(dataArchiveRequest.getIngredientName()));
+        newDataRecord.setManufactureId(manufactureService.findByName(dataArchiveRequest.getManufactureName()).getId());
+        newDataRecord.setIngredientId(ingredientService.findByName(dataArchiveRequest.getIngredientName()).getId());
         dataArchiveRepository.save(newDataRecord);
-        return new MessageResponse("New Employee created successfully");
+        return new MessageResponse("New data record created successfully");
     }
 
 //

@@ -1,11 +1,10 @@
-package com.lekwacious.employee_app.service;
+package com.cosmetic_app.service;
 
-import com.lekwacious.employee_app.data.models.Ingredient;
-import com.lekwacious.employee_app.data.models.Manufacture;
-import com.lekwacious.employee_app.data.payloads.request.IngredientRequest;
-import com.lekwacious.employee_app.data.payloads.response.MessageResponse;
-import com.lekwacious.employee_app.data.repository.IngredientRepository;
-import com.lekwacious.employee_app.data.repository.ManufactureRepository;
+import com.cosmetic_app.data.models.IngredientInfo;
+import com.cosmetic_app.data.repository.IngredientRepository;
+import com.cosmetic_app.data.models.Ingredient;
+import com.cosmetic_app.data.payloads.request.IngredientRequest;
+import com.cosmetic_app.data.payloads.response.MessageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +21,7 @@ public class IngredientServiceImpl implements IngredientService {
         Ingredient newEmployee = new Ingredient();
         newEmployee.setName(employeeRequest.getName());
         ingredientRepository.save(newEmployee);
-        return new MessageResponse("New Employee created successfully");
+        return new MessageResponse("New Ingredient created successfully");
     }
 //
 //    @Override
@@ -56,6 +55,11 @@ public class IngredientServiceImpl implements IngredientService {
     @Override
     public Ingredient findByName(String name) {
         return ingredientRepository.findByName(name);
+    }
+
+    @Override
+    public List<IngredientInfo> findAvailability(String name) {
+        return ingredientRepository.findAvailability(name);
     }
 
 //    @Override

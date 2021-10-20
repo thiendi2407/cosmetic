@@ -1,11 +1,9 @@
-package com.lekwacious.employee_app.web;
+package com.cosmetic_app.web;
 
-import com.lekwacious.employee_app.data.models.DataArchive;
-import com.lekwacious.employee_app.data.models.Ingredient;
-import com.lekwacious.employee_app.data.payloads.request.DataArchiveRequest;
-import com.lekwacious.employee_app.data.payloads.response.MessageResponse;
-import com.lekwacious.employee_app.service.DataArchiveService;
-import com.lekwacious.employee_app.service.IngredientService;
+import com.cosmetic_app.data.models.DataArchive;
+import com.cosmetic_app.data.payloads.request.DataArchiveRequest;
+import com.cosmetic_app.data.payloads.response.MessageResponse;
+import com.cosmetic_app.service.DataArchiveService;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ingredient")
+@RequestMapping("/dataArchive")
 //Line 19 to 24 is the newly added code for swagger documentation
 @ApiResponses(value = {
         @io.swagger.annotations.ApiResponse(code = 400, message = "This is a bad request, please follow the API documentation for the proper request format"),

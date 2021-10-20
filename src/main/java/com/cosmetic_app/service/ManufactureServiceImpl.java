@@ -1,10 +1,11 @@
-package com.lekwacious.employee_app.service;
+package com.cosmetic_app.service;
 
-import com.lekwacious.employee_app.data.models.Ingredient;
-import com.lekwacious.employee_app.data.models.Manufacture;
-import com.lekwacious.employee_app.data.payloads.request.ManufactureRequest;
-import com.lekwacious.employee_app.data.payloads.response.MessageResponse;
-import com.lekwacious.employee_app.data.repository.ManufactureRepository;
+import com.cosmetic_app.data.models.IngredientInfo;
+import com.cosmetic_app.data.models.Manufacture;
+import com.cosmetic_app.data.models.ManufactureInfo;
+import com.cosmetic_app.data.payloads.request.ManufactureRequest;
+import com.cosmetic_app.data.payloads.response.MessageResponse;
+import com.cosmetic_app.data.repository.ManufactureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +26,12 @@ public class ManufactureServiceImpl implements ManufactureService {
         newManufacture.setEmail(employeeRequest.getEmail());
         newManufacture.setCountry(employeeRequest.getPhoneNumber());
         manufactureRepository.save(newManufacture);
-        return new MessageResponse("New Employee created successfully");
+        return new MessageResponse("New Manufacture created successfully");
+    }
 
+    @Override
+    public List<ManufactureInfo> findAvailability(String name) {
+        return manufactureRepository.findAvailability(name);
     }
 //
 //    @Override

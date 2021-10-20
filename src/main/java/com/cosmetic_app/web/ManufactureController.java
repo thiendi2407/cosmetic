@@ -1,7 +1,12 @@
-package com.lekwacious.employee_app.web;
+package com.cosmetic_app.web;
 
-import com.lekwacious.employee_app.data.models.Manufacture;
-import com.lekwacious.employee_app.service.ManufactureService;
+import com.cosmetic_app.data.models.Ingredient;
+import com.cosmetic_app.data.models.IngredientInfo;
+import com.cosmetic_app.data.models.ManufactureInfo;
+import com.cosmetic_app.data.payloads.request.ManufactureRequest;
+import com.cosmetic_app.data.payloads.response.MessageResponse;
+import com.cosmetic_app.service.ManufactureService;
+import com.cosmetic_app.data.models.Manufacture;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,15 +35,28 @@ public class ManufactureController {
         return new ResponseEntity<>(manufactures, HttpStatus.OK);
     }
 
+    @GetMapping("/find/{name}")
+    public ResponseEntity<Manufacture> getIngredientById (@PathVariable("name") String name) {
+        Manufacture manufacture = manufactureService.findByName(name);
+        return new ResponseEntity<>(manufacture, HttpStatus.OK);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<MessageResponse> addManufacture(@RequestBody ManufactureRequest manufactureRequest) {
+        MessageResponse manufacture = manufactureService.createManufacture(manufactureRequest);
+        return new ResponseEntity<>(manufacture, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/find-availability/{name}")
+    public ResponseEntity<List<ManufactureInfo>> getAvailabilityByName (@PathVariable("name") String name) {
+        List<ManufactureInfo> manufactures = manufactureService.findAvailability(name);
+        return new ResponseEntity<>(manufactures, HttpStatus.OK);
+    }
+
 //    @GetMapping("/find/{id}")
 //    public ResponseEntity<Employee> getEmployeeById (@PathVariable("id") Integer id) {
 //        Employee employee = employeeService.getASingleEmployee(id);
 //        return new ResponseEntity<>(employee, HttpStatus.OK);
-//    }
-//    @PostMapping("/add")
-//    public ResponseEntity<MessageResponse> addEmployee( @RequestBody EmployeeRequest employee) {
-//        MessageResponse newEmployee = employeeService.createEmployee(employee);
-//        return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
 //    }
 //
 //    @PutMapping("/update/{id}")
